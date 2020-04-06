@@ -1,4 +1,4 @@
-class LRUCache {
+class LRUCache {     // Hashmap + DoubleLinkedList
     class Node{
         Integer key;
         Integer val;
@@ -63,6 +63,14 @@ class LRUCache {
         tail.prev = n;
     }
 }
+
+/*
+Time complexity : O(1) both for put and get.
+
+Space complexity : O(capacity) since the space is used only for a hashmap and 
+                   double linked list with at most capacity + 1 elements.
+
+*/
 
 /**
  * Your LRUCache object will be instantiated and called as such:
