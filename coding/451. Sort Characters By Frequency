@@ -1,0 +1,61 @@
+## Solution 1   Bucket Sort
+
+class Solution {
+    public String frequencySort(String s) {  
+        // Overall TC: O(n + klogk)--> O(nlogn)   SC: O(k)  --> O(n)
+        
+        // Map <characters, occurrences>   O(k)  k: the num of unique chars
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : s.toCharArray()){
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        int maxFre = Collections.max(map.values());
+        
+        List<List<Character>> buckets = new ArrayList<>();
+        for(int i = 0; i <= maxFre; i++){
+            buckets.add(new ArrayList<>());
+        }
+        for(char c : map.keySet()){
+            int count = map.get(c);
+            buckets.get(count).add(c);
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i = maxFre; i >= 0; i--){
+            for(char c : buckets.get(i)){
+                for(int j = 0; j < i; j++){
+                    sb.append(c);
+                }
+            }
+        }
+       
+        return sb.toString();
+    }
+}
+
+
+## Solution 2  Sorting
+
+class Solution {
+    public String frequencySort(String s) {
+        // count the occurrences
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c: s.toCharArray()){
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        
+        // Make a list of characters and sort it by frequency
+        List<Character> chars = new ArrayList<>(map.keySet());
+        Collections.sort(chars, (a, b) -> (map.get(b) - map.get(a)));
+        
+        // Make StringBuilder and output the result string
+        StringBuilder sb = new StringBuilder();
+        for(char c: chars){
+            int count = map.get(c);
+            for(int i = 0; i < count; i++){
+                sb.append(c);
+            }
+        }
+        return sb.toString();                
+    }
+}
