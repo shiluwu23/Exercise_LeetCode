@@ -28,6 +28,7 @@ class Solution {
     }
 }
 
-* Time complexity : O(Nlogk) where k is the number of linked lists. The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1) time. There are N nodes in the final linked list.
-  Space complexity : O(n) Creating a new linked list costs O(n) space.
- *
+*Time complexity : O(Nlogk) where k is the number of linked lists. The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1) time. 
+There are N nodes in the final linked list.*
+*Space complexity : O(n) Creating a new linked list costs O(n) space.*
+
