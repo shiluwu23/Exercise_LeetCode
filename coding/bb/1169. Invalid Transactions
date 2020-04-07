@@ -1,0 +1,55 @@
+class Solution {
+    public List<String> invalidTransactions(String[] transactions) {
+        // First pass, Map <Name, Map<Time, City>>. 
+// Invalid case： 1. amount > 1000   2. same name & time, different city -> add invalid string 
+        Map<String, Map<Integer, String>> map = new HashMap<>();
+        String invalid = "XXXXXX";
+        List<String> res = new ArrayList<>();
+        
+        for(String s: transactions){
+            String[] transac = s.split(",");
+            String name = transac[0];
+            int time = Integer.parseInt(transac[1]);
+            int amount = Integer.parseInt(transac[2]);
+            String city = transac[3];
+            
+            if(!map.containsKey(name)){
+                map.put(name, new HashMap<Integer, String>());
+            }
+   // 2.         
+            Map<Integer, String> timeMap = map.get(name);
+            if(!timeMap.containsKey(time)){
+                timeMap.put(time, city);
+            }else{   // 相同name下get到了相同time，说明invalid，加上invalid string
+                timeMap.put(time, invalid);
+            }
+   // 1.         
+            if(amount > 1000) res.add(s);
+        }
+        
+        // Second pass：check time validity,within 60s: same name & different city ---> invalid
+        
+        for(String s: transactions){
+            String[] transac = s.split(",");
+            String name = transac[0];
+            int time = Integer.parseInt(transac[1]);
+            int amount = Integer.parseInt(transac[2]);
+            String city = transac[3];
+            Map<Integer, String> timeMap = map.get(name);
+            
+            if(amount > 1000) continue;
+            if(timeMap != null){
+                for(int t = time - 60; t <= time + 60; t++){
+                    String ct = timeMap.get(t);  // city form
+                    if(ct == null) continue;
+                    if(!ct.equals(city)){
+                        res.add(s);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        return res;
+    }
+}
