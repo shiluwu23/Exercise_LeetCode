@@ -8,7 +8,8 @@
 ### Find Kth largest/smallest element
 * [378. Kth Smallest Element in a Sorted Matrix](https://github.com/shiluwu23/LeetCode/blob/master/coding/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.md)
 
-### 二分法
+### Binary Search 二分法
+* [153. Find Minimum in Rotated Sorted Array](https://github.com/shiluwu23/LeetCode/blob/master/coding/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.md)
 
 
 ### Other
