@@ -8,6 +8,9 @@
 ### Find Kth largest/smallest element
 * [378. Kth Smallest Element in a Sorted Matrix](https://github.com/shiluwu23/LeetCode/blob/master/coding/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.md)
 
+### 二分法
+
+
 ### Other
 1. [23 Merge k Sorted Lists](https://github.com/shiluwu23/LeetCode/blob/master/coding/23.%20Merge%20k%20Sorted%20Lists)
 2. [146 LRU Cache](https://github.com/shiluwu23/LeetCode/blob/master/coding/146%20LRU%20Cache)
