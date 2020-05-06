@@ -14,6 +14,7 @@ import java.util.Queue;
 public class BFS_Surrounde_Regions {
     public int rows;
     public int cols;
+    public int[][] dirs = new int[][]{{1,0}, {-1,0},{0,1},{0,-1}};
 
     public void solve(char[][] board) {
         if(board == null || board.length < 2 || board[0].length < 2) return;
