@@ -14,7 +14,6 @@ import java.util.Queue;
 public class BFS_Surrounde_Regions {
     public int rows;
     public int cols;
-    public int[][] dirs = new int[][]{{1,0}, {-1,0},{0,1},{0,-1}};
 
     public void solve(char[][] board) {
         if(board == null || board.length < 2 || board[0].length < 2) return;
@@ -48,15 +47,25 @@ public class BFS_Surrounde_Regions {
 
         while(!queue.isEmpty()){
             int[] curr = queue.poll();
-            int x = curr[0];
-            int y = curr[1];
-            board[x][y] = '*';
-
-            for(int[] dir: dirs){
-                int r = dir[0] + x;
-                int c = dir[1] + y;
-                if(r < 0 || r >= rows || c < 0 || c >= cols || board[r][c] != 'O') continue;
-                queue.offer(new int[]{r, c});
+            int r = curr[0];
+            int c = curr[1];
+            board[r][c] = '*';
+            // if(r < 0 || r >= rows || c < 0 || c >= cols || board[r][c] != 'O') continue;
+            if(r > 0 && board[r - 1][c] == 'O') {
+                board[r - 1][c] = '*';
+                queue.offer(new int[]{r-1, c});
+            }
+            if(r < rows - 1 && board[r + 1][c] == 'O'){
+                board[r + 1][c] = '*';
+                queue.offer(new int[]{r+1, c});
+            }
+            if(c > 0 && board[r][c - 1] == 'O'){
+                board[r][c - 1] = '*';
+                queue.offer(new int[]{r, c - 1});
+            }
+            if(c < cols - 1 && board[r][c + 1] == 'O'){
+                board[r][c + 1] = '*';
+                queue.offer(new int[]{r, c + 1});
             }
         }
     }
